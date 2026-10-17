@@ -1,11 +1,10 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,16 +12,26 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
+  -- Override nvim-treesitter to track the main branch for Neovim 0.12+
   -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
+  --   "nvim-treesitter/nvim-treesitter",
+  --   branch = "main",
+  --   opts = {
+  --     ensure_installed = {
+  --       "vim", "lua", "vimdoc",
+  --       "html", "css", "cpp", "python", "markdown", "markdown_inline"
+  --     },
+  --   },
   -- },
+  {
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  build = ":TSUpdate",
+  opts = {
+    ensure_installed = {
+      "vim", "lua", "vimdoc",
+      "html", "css", "cpp", "python", "markdown", "markdown_inline"
+    },
+  },
+},
 }
